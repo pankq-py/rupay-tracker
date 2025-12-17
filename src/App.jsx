@@ -29,6 +29,10 @@ function App() {
     setAmount('');
   };
 
+  const deleteExpense = (id) => {
+    setExpenses(prev => prev.filter(e => e.id !== id));
+  };
+
   const total = expenses.reduce((sum, e) => sum + e.amount, 0);
   const categoryTotals = expenses.reduce((acc, e) => {
     acc[e.category] = (acc[e.category] || 0) + e.amount;
@@ -43,42 +47,69 @@ function App() {
 
   return (
     <div style={{ padding: 16, maxWidth: 480, margin: '0 auto', fontFamily: 'system-ui' }}>
-      <h2>Rupay Tracker</h2>
+      <h2 style={{ textAlign: 'center' }}>Rupay Tracker</h2>
 
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <input
           type="number"
           placeholder="Amount ₹"
           value={amount}
           onChange={e => setAmount(e.target.value)}
-          style={{ marginRight: 8 }}
+          style={{ flex: '0 0 100px', padding: 8 }}
         />
-        <select value={category} onChange={e => setCategory(e.target.value)} style={{ marginRight: 8 }}>
+        <select
+          value={category}
+          onChange={e => setCategory(e.target.value)}
+          style={{ flex: '1 0 120px', padding: 8 }}
+        >
           <option>Food</option>
           <option>Travel</option>
           <option>Shopping</option>
           <option>Entertainment</option>
           <option>Other</option>
         </select>
-        <button onClick={addExpense}>Add</button>
+        <button onClick={addExpense} style={{ padding: '8px 16px' }}>
+          Add
+        </button>
       </div>
 
       <h3>Total: ₹{total.toFixed(0)}</h3>
 
       {total > 0 && (
-        <PieChart
-          data={pieData}
-          label={({ dataEntry }) =>
-            `${dataEntry.title} ${Math.round(dataEntry.percentage)}%`
-          }
-          style={{ height: 250 }}
-        />
+        <div style={{ marginBottom: 16 }}>
+          <PieChart
+            data={pieData}
+            label={({ dataEntry }) =>
+              `${dataEntry.title} ${Math.round(dataEntry.percentage)}%`
+            }
+            style={{ height: 250 }}
+          />
+        </div>
       )}
 
-      <ul>
+      <h3>Recent spends</h3>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
         {expenses.slice().reverse().map(e => (
-          <li key={e.id}>
-            {e.date} – {e.category}: ₹{e.amount}
+          <li
+            key={e.id}
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '8px 0',
+              borderBottom: '1px solid #eee',
+            }}
+          >
+            <div>
+              <div>{e.category}: ₹{e.amount}</div>
+              <div style={{ fontSize: 12, color: '#666' }}>{e.date}</div>
+            </div>
+            <button
+              onClick={() => deleteExpense(e.id)}
+              style={{ border: 'none', background: '#eee', padding: '4px 8px' }}
+            >
+              X
+            </button>
           </li>
         ))}
       </ul>
