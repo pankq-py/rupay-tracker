@@ -24,6 +24,7 @@ function App() {
         amount: Number(amount),
         category,
         date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
       },
     ]);
     setAmount('');
@@ -82,6 +83,8 @@ function App() {
             label={({ dataEntry }) =>
               `${dataEntry.title} ${Math.round(dataEntry.percentage)}%`
             }
+            labelPosition={60}
+            labelStyle={{ fontSize: 5, fill: 'white' }}
             style={{ height: 250 }}
           />
         </div>
@@ -102,7 +105,7 @@ function App() {
           >
             <div>
               <div>{e.category}: ₹{e.amount}</div>
-              <div style={{ fontSize: 12, color: '#666' }}>{e.date}</div>
+              <div style={{ fontSize: 12, color: '#666' }}>{e.date} {e.time}</div>
             </div>
             <button
               onClick={() => deleteExpense(e.id)}
