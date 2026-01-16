@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import Footer from './Footer';
 import './Login.css';
 
 const Login = () => {
@@ -33,6 +34,7 @@ const Login = () => {
   };
 
   return (
+    <>
     <div className="login-container">
       <div className="login-box">
         <h1>💰 RuPay Tracker</h1>
@@ -88,13 +90,15 @@ const Login = () => {
           <button
             type="button"
             onClick={() => setIsLogin(!isLogin)}
-            style={{ background: 'none', border: 'none', color: '#667eea', cursor: 'pointer', textDecoration: 'underline' }}
+            style={{ background: 'none', border: 'none', color: '#667eea', cursor: 'pointer', textDecoration: 'underline', float: 'right' }}
           >
             {isLogin ? 'Register' : 'Login'}
           </button>
         </p>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

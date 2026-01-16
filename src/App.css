@@ -6,7 +6,7 @@
 
 #root {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -25,6 +25,42 @@
   margin-bottom: 30px;
   font-size: 2.5rem;
   text-align: center;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 25px 20px 15px;
+  margin-top: 40px;
+  color: #ddd;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: transparent;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  color: #ddd;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.footer-content strong {
+  color: #fff;
+}
+
+.footer-tagline {
+  color: #bbb !important;
+  font-size: 12px !important;
+  font-style: italic;
+  margin-top: 8px !important;
+}
+
+.heart {
+  display: inline-block;
+  animation: heartbeat 1.5s ease-in-out infinite;
 }
 
 /* Expense Form */
@@ -352,5 +388,55 @@
 
   .expense-actions {
     flex-direction: column;
+  }
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+/* Footer Mobile Responsive */
+@media (max-width: 768px) {
+  .app-footer {
+    padding: 20px 15px 12px;
+    margin-top: 30px;
+    font-size: 13px;
+  }
+
+  .footer-content p {
+    font-size: 13px;
+    margin: 4px 0;
+  }
+
+  .footer-tagline {
+    font-size: 11px !important;
+    margin-top: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-footer {
+    padding: 15px 10px 8px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .footer-content p {
+    font-size: 12px;
+    margin: 3px 0;
+  }
+
+  .footer-tagline {
+    font-size: 10px !important;
+    margin-top: 5px !important;
   }
 }

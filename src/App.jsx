@@ -5,6 +5,7 @@ import ExpenseList from './components/ExpenseList';
 import ExportBtn from './components/ExportBtn';
 import Login from './components/Login';
 import LoadingSpinner from './components/LoadingSpinner';
+import Footer from './components/Footer';
 import { useExpenses } from './hooks/useExpenses';
 import { useAuth } from './contexts/AuthContext';
 import './App.css';
@@ -82,6 +83,7 @@ export default function App() {
         Logout ({username})
       </button>
       <AppContent />
+      <Footer />
     </>
   );
 }
