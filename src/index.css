@@ -2,15 +2,23 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
 a {
@@ -73,3 +81,15 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+/* src/index.css - Basic styling */
+.app { max-width: 600px; margin: 0 auto; padding: 20px; }
+.expense-form { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.expense-form input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+.expense-form button { padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.expense-list ul { list-style: none; padding: 0; }
+.expense-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+.expense-item button { background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+.export-btn { background: #28a745; margin-top: 20px; }
+h1, h2 { color: #333; }
